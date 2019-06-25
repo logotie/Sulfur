@@ -12,6 +12,13 @@ namespace Sulfur
     [ApiController]
     public class TorrentFileController : ControllerBase
     {
+        private readonly SulfurDbContext _context;
+
+        public TorrentFileController(SulfurDbContext context)
+        {
+            _context = context;
+        }
+
         // POST api/TorrentFile
         //Post a JSON including the torrent url
         [HttpPost]

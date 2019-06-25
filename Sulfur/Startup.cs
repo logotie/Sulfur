@@ -28,7 +28,7 @@ namespace Sulfur
         public void ConfigureServices(IServiceCollection services)
         {
             //Register the service with the Dependency Injection Container, DbContext is a service
-            services.AddDbContext<SulfurContext>(opt => opt.UseInMemoryDatabase("UrlPayloadDb"));
+            services.AddDbContext<SulfurDbContext>(opt => opt.UseInMemoryDatabase("UrlPayloadDb"));
             //Specifies also that it will use an in memory database
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

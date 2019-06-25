@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Sulfur.Models
 {
-    public class SulfurContext : DbContext
+    public class SulfurDbContext : DbContext
     {
         //DbContext is primary class responsible for database operations
-        public SulfurContext(DbContextOptions<SulfurContext> options) : base(options)
+        public SulfurDbContext(DbContextOptions<SulfurDbContext> options) : base(options)
         {
 
         }
