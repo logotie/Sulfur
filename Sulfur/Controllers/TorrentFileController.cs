@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sulfur.Models;
+using Sulfur.Models.Db;
 using Sulfur.Services.UrlPayloadActions;
 
 namespace Sulfur
@@ -13,10 +14,10 @@ namespace Sulfur
     [ApiController]
     public class TorrentFileController : ControllerBase
     {
-        private readonly SulfurDbContext _context;
+        private readonly IDbContext _context;
         private readonly IUrlPayloadService _urlPayloadService;
 
-        public TorrentFileController(SulfurDbContext context, IUrlPayloadService urlPayloadService)
+        public TorrentFileController(IDbContext context, IUrlPayloadService urlPayloadService)
         {
             _context = context;
             _urlPayloadService = urlPayloadService;
@@ -27,10 +28,16 @@ namespace Sulfur
         [HttpPost]
         public ActionResult<GuidResult> PostUrlPayload(UrlPayload url)
         {
+            //Checks if it is possible to bind the values in the request to the model.
+            if (!ModelState.IsValid)
+            {
+                //Returns a 400 bad request
+                return BadRequest(ModelState);
+            }
             //ActionResult is the base class for various results for example JSONResult or Result
             //You can return a various amount of things.
 
-            //Return the url value in the payload
+            //Return a guid value from the post request
             return _urlPayloadService.GenerateGuidPayload();
         }
     }

@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sulfur.Models;
+using Sulfur.Models.Db;
 using Sulfur.Services.UrlPayloadActions;
 
 namespace Sulfur
