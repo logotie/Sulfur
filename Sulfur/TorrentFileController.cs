@@ -11,10 +11,12 @@ namespace Sulfur
     [ApiController]
     public class TorrentFileController : ControllerBase
     {
-        // GET api/TorrentFile
-        [HttpGet]
+        // POST api/TorrentFile
+        [HttpPost]
         public ActionResult<IEnumerable<string>> Get()
         {
+            //ActionResult is the base class for various results for example JSONResult or Result
+            //You can return a various amount of things.
             return new string[] { "value1", "value2" };
         }
     }
