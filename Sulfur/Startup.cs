@@ -31,6 +31,7 @@ namespace Sulfur
             //Register the service with the Dependency Injection Container, DbContext is a service
             services.AddDbContext<SulfurDbContext>(opt => opt.UseInMemoryDatabase("UrlPayloadDb"));
 
+            //Dependency injection of the service into the torrent file controller
             services.AddScoped<IUrlPayloadService, UrlPayloadService>();
 
             //Specifies also that it will use an in memory database

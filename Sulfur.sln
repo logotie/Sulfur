@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sulfur", "Sulfur\Sulfur.csproj", "{1D0B2794-D5C9-45D4-A9AE-B5D46C0ECB85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sulfur", "Sulfur\Sulfur.csproj", "{1D0B2794-D5C9-45D4-A9AE-B5D46C0ECB85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SulfurTests", "SulfurTests\SulfurTests.csproj", "{DD0FB301-EE75-4098-9FBA-2ADFC615B1DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1D0B2794-D5C9-45D4-A9AE-B5D46C0ECB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D0B2794-D5C9-45D4-A9AE-B5D46C0ECB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D0B2794-D5C9-45D4-A9AE-B5D46C0ECB85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD0FB301-EE75-4098-9FBA-2ADFC615B1DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD0FB301-EE75-4098-9FBA-2ADFC615B1DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD0FB301-EE75-4098-9FBA-2ADFC615B1DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD0FB301-EE75-4098-9FBA-2ADFC615B1DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
