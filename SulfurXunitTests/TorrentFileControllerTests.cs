@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Moq;
 using Sulfur;
 using Sulfur.Models;
+using Sulfur.Models.Db;
 using Sulfur.Services.UrlPayloadActions;
 using System;
 using System.Collections.Generic;
@@ -17,12 +18,13 @@ namespace SulfurXunitTests
         [Fact]
         public void GuidGeneratePostRequestTest()
         {
-            var mockContext = new Mock<SulfurDbContext>();
+            //Setup
+            var mockContext = new Mock<IDbContext>();
             var mockUrlPayloadService = new Mock<UrlPayloadService>();
             var mockUrlPayloadRequest = new Mock<UrlPayload>();
             
-            //mockUrlPayloadRequest.SetupSet(s => s.Url = "foo");
-            //mockUrlPayloadRequest.Setup(s => s.Url).Returns("google.com");
+            //Sets up the url field to return google.com
+            mockUrlPayloadRequest.Setup(s => s.Url).Returns("google.com");
 
             var controller = new TorrentFileController(mockContext.Object, mockUrlPayloadService.Object);
 

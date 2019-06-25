@@ -10,6 +10,7 @@ namespace Sulfur.Models
     {
         //Model binding is not case sensitive
         //https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-2.2
-        public String Url { get; set; }
+        //Added virtual to allow it to be set/get in the unit tests
+        public virtual String Url { get; set; }
     }
 }
