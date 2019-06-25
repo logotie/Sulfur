@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sulfur.Models;
 
 namespace Sulfur
 {
@@ -12,12 +13,15 @@ namespace Sulfur
     public class TorrentFileController : ControllerBase
     {
         // POST api/TorrentFile
+        //Post a JSON including the torrent url
         [HttpPost]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> PostUrlPayload(UrlPayload url)
         {
             //ActionResult is the base class for various results for example JSONResult or Result
             //You can return a various amount of things.
-            return new string[] { "value1", "value2" };
+
+            //Return the url value in the payload
+            return url.Url;
         }
     }
 }
