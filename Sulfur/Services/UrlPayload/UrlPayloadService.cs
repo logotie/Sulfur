@@ -6,10 +6,10 @@ using Sulfur.Models;
 
 namespace Sulfur.Services.UrlPayload
 {
-    public class UrlPayloadService : IUserPayloadService
+    public class UrlPayloadService : IUrlPayloadService
     {
         //Create a new Guid code to be sent back as a response.
-        GuidResult IUserPayloadService.GenerateGuidPayload(string url)
+        GuidResult IUrlPayloadService.GenerateGuidPayload(string url)
         {
             Guid code = Guid.NewGuid();
             GuidResult guidCode = new GuidResult();

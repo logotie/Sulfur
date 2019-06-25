@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sulfur.Models;
+using Sulfur.Services.UrlPayload;
 
 namespace Sulfur
 {
@@ -29,6 +30,9 @@ namespace Sulfur
         {
             //Register the service with the Dependency Injection Container, DbContext is a service
             services.AddDbContext<SulfurDbContext>(opt => opt.UseInMemoryDatabase("UrlPayloadDb"));
+
+            services.AddScoped<IUrlPayloadService, UrlPayloadService>();
+
             //Specifies also that it will use an in memory database
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

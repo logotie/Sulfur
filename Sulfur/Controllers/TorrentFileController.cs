@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sulfur.Models;
+using Sulfur.Services.UrlPayload;
 
 namespace Sulfur
 {
@@ -13,10 +14,12 @@ namespace Sulfur
     public class TorrentFileController : ControllerBase
     {
         private readonly SulfurDbContext _context;
+        private readonly IUrlPayloadService _urlPayloadService;
 
-        public TorrentFileController(SulfurDbContext context)
+        public TorrentFileController(SulfurDbContext context, IUrlPayloadService urlPayloadService)
         {
             _context = context;
+            _urlPayloadService = urlPayloadService;
         }
 
         // POST api/TorrentFile
