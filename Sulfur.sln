@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sulfur", "Sulfur\Sulfur.csproj", "{1D0B2794-D5C9-45D4-A9AE-B5D46C0ECB85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SulfurXunitTests", "SulfurXunitTests\SulfurXunitTests.csproj", "{CE205A39-5F02-41B0-B772-790838436656}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1D0B2794-D5C9-45D4-A9AE-B5D46C0ECB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D0B2794-D5C9-45D4-A9AE-B5D46C0ECB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D0B2794-D5C9-45D4-A9AE-B5D46C0ECB85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE205A39-5F02-41B0-B772-790838436656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE205A39-5F02-41B0-B772-790838436656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE205A39-5F02-41B0-B772-790838436656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE205A39-5F02-41B0-B772-790838436656}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
