@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Sulfur.Models;
 
-namespace Sulfur.Services.UrlPayload
+namespace Sulfur.Services.UrlPayloadActions
 {
     public class UrlPayloadService : IUrlPayloadService
     {
         //Create a new Guid code to be sent back as a response.
-        GuidResult IUrlPayloadService.GenerateGuidPayload(string url)
+        //TODO In the future, the UrlPayload will be 
+        GuidResult IUrlPayloadService.GenerateGuidPayload()
         {
             Guid code = Guid.NewGuid();
             GuidResult guidCode = new GuidResult();

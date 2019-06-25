@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sulfur.Models;
-using Sulfur.Services.UrlPayload;
+using Sulfur.Services.UrlPayloadActions;
 
 namespace Sulfur
 {
@@ -25,13 +25,13 @@ namespace Sulfur
         // POST api/TorrentFile
         //Post a JSON including the torrent url
         [HttpPost]
-        public ActionResult<string> PostUrlPayload(UrlPayload url)
+        public ActionResult<GuidResult> PostUrlPayload(UrlPayload url)
         {
             //ActionResult is the base class for various results for example JSONResult or Result
             //You can return a various amount of things.
 
             //Return the url value in the payload
-            return url.Url;
+            return _urlPayloadService.GenerateGuidPayload();
         }
     }
 }
