@@ -12,7 +12,7 @@ using Sulfur.Services.UrlPayloadActions;
 
 namespace Sulfur
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class TorrentFileController : ControllerBase
     {
