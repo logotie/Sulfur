@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sulfur.Constants;
 using Sulfur.Models;
 using Sulfur.Models.Db;
 using Sulfur.Services.UrlPayloadActions;
@@ -34,9 +35,15 @@ namespace Sulfur
                 //Returns a 400 bad request
                 return BadRequest(ModelState);
             }
+
+            //Access HTTP Header
+            string headerAuthToken = Request.Headers[WebConstants.AuthHeaderKeyValue];
+
+           
+
+
             //ActionResult is the base class for various results for example JSONResult or Result
             //You can return a various amount of things.
-
             //Return a guid value from the post request
             return _urlPayloadService.GenerateGuidPayload();
         }
