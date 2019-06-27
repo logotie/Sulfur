@@ -16,6 +16,7 @@ namespace SulfurXunitTests
 {
     public class TorrentFileControllerTests
     {
+        //Need to fix the tests to somehow mock the header 
         [Fact]
         public void GuidGeneratePostRequestTest()
         {
@@ -28,8 +29,9 @@ namespace SulfurXunitTests
             //Sets up the url field to return google.com
             mockUrlPayloadRequest.Setup(s => s.Url).Returns("google.com");
 
-            var controller = new TorrentFileController(mockContext.Object, mockUrlPayloadService.Object, mockUrlHeaderService.Object);
 
+            var controller = new TorrentFileController(mockContext.Object, mockUrlPayloadService.Object, mockUrlHeaderService.Object);
+            
             //Act
             var result = controller.PostUrlPayload(mockUrlPayloadRequest.Object);
 
