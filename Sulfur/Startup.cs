@@ -34,6 +34,7 @@ namespace Sulfur
             services.AddDbContext<SulfurDbContext>(opt => opt.UseInMemoryDatabase("UrlPayloadDb"));
 
             //Dependency injection of the service into the torrent file controller
+            services.AddScoped<IDbContext, SulfurDbContext>();
             services.AddScoped<IUrlPayloadService, UrlPayloadService>();
             services.AddScoped<IUrlHeaderService, UrlHeaderService>();
 
