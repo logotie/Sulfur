@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Sulfur;
+using Sulfur.Constants;
 using Sulfur.Models;
 using Sulfur.Models.Db;
 using Sulfur.Services.UrlHeaderActions;
 using Sulfur.Services.UrlPayloadActions;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using Xunit;
 
@@ -29,9 +32,13 @@ namespace SulfurXunitTests
             //Sets up the url field to return google.com
             mockUrlPayloadRequest.Setup(s => s.Url).Returns("google.com");
 
+            //var request = new HttpRequestMessage(HttpMethod.Post, "http://stackoverflow");
+            //request.Headers.Add(WebConstants.AuthHeaderKeyValue, ServiceConstants.AuthTokenPassword);
 
             var controller = new TorrentFileController(mockContext.Object, mockUrlPayloadService.Object, mockUrlHeaderService.Object);
-            
+            controller.ControllerContext.HttpContext = new DefaultHttpContext();
+            controller.Request.Headers.Add(WebConstants.AuthHeaderKeyValue, ServiceConstants.AuthTokenPassword); 
+
             //Act
             var result = controller.PostUrlPayload(mockUrlPayloadRequest.Object);
 
