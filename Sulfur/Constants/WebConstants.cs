@@ -8,6 +8,6 @@ namespace Sulfur.Constants
     public static class WebConstants
     {
         //TorrentFile Controller Constants
-        public static string AuthHeaderKeyValue = "AuthHeader";
+        public static string AuthHeaderKeyValue = "Authorization";
     }
 }
