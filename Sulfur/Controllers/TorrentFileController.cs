@@ -37,7 +37,7 @@ namespace Sulfur
             }
 
             //Access HTTP Header
-            string headerAuthToken = Request.Headers[WebConstants.AuthHeaderKeyValue];
+            //string headerAuthToken = Request.Headers[WebConstants.AuthHeaderKeyValue];
 
            
 
