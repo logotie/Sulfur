@@ -41,7 +41,9 @@ namespace SulfurXunitTests
             String invalidUrl = "https://www.google";
             String invalidUrl2 = "https://google";
 
-            Assert.True()
+            Assert.True(actionService.ValidUrl(validUrl));
+            Assert.False(actionService.ValidUrl(invalidUrl));
+            Assert.False(actionService.ValidUrl(invalidUrl2));
 
 
         }
