@@ -17,7 +17,7 @@ namespace Sulfur.Services.UrlHeaderActions
 
         //Create a new Guid code to be sent back as a response.
         //TODO In the future, the UrlPayload will be 
-        GuidResult IUrlAactionService.GenerateGuidPayload()
+        public GuidResult GenerateGuidPayload()
         {
             Guid code = Guid.NewGuid();
             GuidResult guidCode = new GuidResult();
