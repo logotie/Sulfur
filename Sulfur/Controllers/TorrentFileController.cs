@@ -14,9 +14,9 @@ namespace Sulfur
     [ApiController]
     public class TorrentFileController : ControllerBase
     {
-        private readonly IUrlAactionService _urlActionService;
+        private readonly IUrlActionService _urlActionService;
 
-        public TorrentFileController(IUrlAactionService urlActionService)
+        public TorrentFileController(IUrlActionService urlActionService)
         {
             _urlActionService = urlActionService;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sulfur.Services.UrlHeaderActions
 {
-    public interface IUrlAactionService
+    public interface IUrlActionService
     {
         bool SuccessfulMatchOnHeaderToken(String headerToken);
 

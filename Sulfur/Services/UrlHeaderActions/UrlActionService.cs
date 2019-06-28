@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sulfur.Services.UrlHeaderActions
 {
-    public class UrlHeaderService : IUrlAactionService
+    public class UrlHeaderService : IUrlActionService
     {
         //Checks whether the auth header token matches our predefined value
         public bool SuccessfulMatchOnHeaderToken(string headerToken)

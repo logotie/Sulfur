@@ -11,7 +11,7 @@ namespace SulfurXunitTests
 {
     public class UrlActionServiceTests
     {
-        private readonly IUrlAactionService actionService;
+        private readonly IUrlActionService actionService;
         public UrlActionServiceTests()
         {
             var mock = new Mock<UrlHeaderService>();
