@@ -11,7 +11,7 @@ namespace Sulfur.Services.UrlHeaderActions
         //Checks whether the auth header token matches our predefined value
         public bool SuccessfulMatchOnHeaderToken(string headerToken)
         {
-            return String.Equals(headerToken, ServiceConstants.AuthTokenPassword);
+            return headerToken.Equals(ServiceConstants.AuthTokenPassword);
         }
     }
 }
