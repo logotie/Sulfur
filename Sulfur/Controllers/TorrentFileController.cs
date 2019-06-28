@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sulfur.Constants;
 using Sulfur.Models;
-using Sulfur.Models.Db;
 using Sulfur.Services.UrlHeaderActions;
 
 namespace Sulfur
@@ -15,12 +14,10 @@ namespace Sulfur
     [ApiController]
     public class TorrentFileController : ControllerBase
     {
-        private readonly IDbContext _context;
         private readonly IUrlAactionService _urlActionService;
 
-        public TorrentFileController(IDbContext context, IUrlAactionService urlActionService)
+        public TorrentFileController(IUrlAactionService urlActionService)
         {
-            _context = context;
             _urlActionService = urlActionService;
         }
 

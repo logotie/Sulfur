@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sulfur.Models;
-using Sulfur.Models.Db;
 using Sulfur.Services.UrlHeaderActions;
 
 namespace Sulfur
@@ -29,11 +28,7 @@ namespace Sulfur
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //Register the service with the Dependency Injection Container, DbContext is a service
-            services.AddDbContext<SulfurDbContext>(opt => opt.UseInMemoryDatabase("UrlPayloadDb"));
-
             //Dependency injection of the service into the torrent file controller
-            services.AddScoped<IDbContext, SulfurDbContext>();
             services.AddScoped<IUrlAactionService, UrlHeaderService>();
 
             //Specifies also that it will use an in memory database
