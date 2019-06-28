@@ -29,7 +29,7 @@ namespace Sulfur
         public void ConfigureServices(IServiceCollection services)
         {
             //Dependency injection of the service into the torrent file controller
-            services.AddScoped<IUrlActionService, UrlHeaderService>();
+            services.AddScoped<IUrlActionService, UrlActionService>();
 
             //Specifies also that it will use an in memory database
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

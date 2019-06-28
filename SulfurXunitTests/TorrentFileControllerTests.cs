@@ -23,7 +23,7 @@ namespace SulfurXunitTests
         {
             //Setup
             var mockUrlPayloadRequest = new Mock<UrlPayload>();
-            var mockUrlHeaderService = new Mock<UrlHeaderService>();
+            var mockUrlHeaderService = new Mock<UrlActionService>();
 
             //Sets up the url field to return google.com
             mockUrlPayloadRequest.Setup(s => s.Url).Returns("google.com");

@@ -14,7 +14,7 @@ namespace SulfurXunitTests
         private readonly IUrlActionService actionService;
         public UrlActionServiceTests()
         {
-            var mock = new Mock<UrlHeaderService>();
+            var mock = new Mock<UrlActionService>();
             actionService = mock.Object;
         }
 
@@ -32,6 +32,18 @@ namespace SulfurXunitTests
             GuidResult resultPayload = actionService.GenerateGuidPayload();
 
             Assert.False(String.IsNullOrEmpty(resultPayload.Id));
+        }
+
+        [Fact]
+        public void ValidUrlTest()
+        {
+            String validUrl = "https://www.google.com";
+            String invalidUrl = "https://www.google";
+            String invalidUrl2 = "https://google";
+
+            Assert.True()
+
+
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sulfur.Services.UrlHeaderActions
 {
-    public class UrlHeaderService : IUrlActionService
+    public class UrlActionService : IUrlActionService
     {
         //Checks whether the auth header token matches our predefined value
         public bool SuccessfulMatchOnHeaderToken(string headerToken)
@@ -23,6 +23,12 @@ namespace Sulfur.Services.UrlHeaderActions
             GuidResult guidCode = new GuidResult();
             guidCode.Id = code.ToString();
             return guidCode;
+        }
+
+        //Returns whether the url is valid
+        public bool ValidUrl(string url)
+        {
+            throw new NotImplementedException();
         }
     }
 }
