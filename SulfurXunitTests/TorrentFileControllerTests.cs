@@ -33,7 +33,7 @@ namespace SulfurXunitTests
 
             var controller = new TorrentFileController(mockUrlHeaderService.Object);
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
-            controller.Request.Headers.Add(WebConstants.AuthHeaderKeyValue, ServiceConstants.AuthTokenPassword); 
+            controller.Request.Headers.Add("Authorization", ServiceConstants.AuthTokenPassword); 
 
             //Act
             var result = controller.PostUrlPayload(mockUrlPayloadRequest.Object);

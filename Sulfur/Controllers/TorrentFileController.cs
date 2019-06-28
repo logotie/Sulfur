@@ -27,7 +27,7 @@ namespace Sulfur
         public ActionResult<GuidResult> PostUrlPayload(UrlPayload url)
         {
             //Access HTTP Header
-            string headerAuthToken = Request.Headers[WebConstants.AuthHeaderKeyValue];
+            string headerAuthToken = Request.Headers["Authorization"];
 
             //Checks if it is possible to bind the values in the request to the model.
             //If url is null, means it was unable to bind the model
