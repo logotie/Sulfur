@@ -7,7 +7,6 @@ using Sulfur.Constants;
 using Sulfur.Models;
 using Sulfur.Models.Db;
 using Sulfur.Services.UrlHeaderActions;
-using Sulfur.Services.UrlPayloadActions;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -25,7 +24,6 @@ namespace SulfurXunitTests
         {
             //Setup
             var mockContext = new Mock<IDbContext>();
-            var mockUrlPayloadService = new Mock<UrlPayloadService>();
             var mockUrlPayloadRequest = new Mock<UrlPayload>();
             var mockUrlHeaderService = new Mock<UrlHeaderService>();
 
@@ -35,7 +33,7 @@ namespace SulfurXunitTests
             //var request = new HttpRequestMessage(HttpMethod.Post, "http://stackoverflow");
             //request.Headers.Add(WebConstants.AuthHeaderKeyValue, ServiceConstants.AuthTokenPassword);
 
-            var controller = new TorrentFileController(mockContext.Object, mockUrlPayloadService.Object, mockUrlHeaderService.Object);
+            var controller = new TorrentFileController(mockContext.Object, mockUrlHeaderService.Object);
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
             controller.Request.Headers.Add(WebConstants.AuthHeaderKeyValue, ServiceConstants.AuthTokenPassword); 
 

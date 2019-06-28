@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sulfur.Services.UrlPayloadActions
+namespace Sulfur.Services.UrlHeaderActions
 {
-    //Methods to be used by the UserPayloadService
-    public interface IUrlPayloadService
+    public interface IUrlAactionService
     {
+        bool SuccessfulMatchOnHeaderToken(String headerToken);
+
         GuidResult GenerateGuidPayload();
     }
 }

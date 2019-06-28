@@ -1,5 +1,6 @@
 ﻿using Moq;
 using Sulfur.Constants;
+using Sulfur.Models;
 using Sulfur.Services.UrlHeaderActions;
 using System;
 using System.Collections.Generic;
@@ -8,20 +9,29 @@ using Xunit;
 
 namespace SulfurXunitTests
 {
-    public class UrlHeaderServiceTests
+    public class UrlActionServiceTests
     {
-        private readonly IUrlHeaderService headerService;
-        public UrlHeaderServiceTests()
+        private readonly IUrlAactionService actionService;
+        public UrlActionServiceTests()
         {
             var mock = new Mock<UrlHeaderService>();
-            headerService = mock.Object;
+            actionService = mock.Object;
         }
 
         //Just checking there's a match on the received auth token 
         [Fact]
         public void CheckAuthTokenMethodIsSuccessful()
         {    
-            Assert.True(headerService.SuccessfulMatchOnHeaderToken(ServiceConstants.AuthTokenPassword));
+            Assert.True(actionService.SuccessfulMatchOnHeaderToken(ServiceConstants.AuthTokenPassword));
+        }
+
+        //Just checking that the string generated from the payload service is not blank or null.
+        [Fact]
+        public void GenerateNonBlankGuidPayloadString()
+        {
+            GuidResult resultPayload = actionService.GenerateGuidPayload();
+
+            Assert.False(String.IsNullOrEmpty(resultPayload.Id));
         }
     }
 }
