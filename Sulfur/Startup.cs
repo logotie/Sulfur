@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sulfur.Models;
+using Sulfur.Services.UrlFileDownloadActions;
 using Sulfur.Services.UrlHeaderActions;
 
 namespace Sulfur
@@ -30,6 +31,7 @@ namespace Sulfur
         {
             //Dependency injection of the service into the torrent file controller
             services.AddScoped<IUrlActionService, UrlActionService>();
+            services.AddScoped<IUrlFileDownloadService, UrlFileDownloadService>();
 
             //Specifies also that it will use an in memory database
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
