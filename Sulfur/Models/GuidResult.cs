@@ -9,5 +9,7 @@ namespace Sulfur.Models
     public class GuidResult
     {
         public String Id { get; set; }
+        public String success { get; set; }
+        public String error { get; set; }
     }
 }

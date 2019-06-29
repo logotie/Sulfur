@@ -1,4 +1,5 @@
-﻿using Sulfur.Models;
+﻿using Sulfur.Constants;
+using Sulfur.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace Sulfur.Services.UrlHeaderActions
     {
         bool SuccessfulMatchOnHeaderToken(String headerToken);
 
-        GuidResult GenerateGuidPayload();
+        GuidResult GenerateGuidPayload(bool ableToProcessUrl, ServiceConstants.UrlFileDlEnums urlFileDlEnum);
     }
 }
