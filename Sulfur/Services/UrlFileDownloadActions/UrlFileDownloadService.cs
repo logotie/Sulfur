@@ -74,7 +74,7 @@ namespace Sulfur.Services.UrlFileDownloadActions
             byte[] torrentFileAsByteArray;
             using (var webClient = new WebClient())
             {
-                torrentFileAsByteArray = webClient.DownloadData("uri src");
+                torrentFileAsByteArray = webClient.DownloadData(url);
                 return torrentFileAsByteArray;
             }
         }
