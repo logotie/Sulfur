@@ -1,4 +1,5 @@
-﻿using MimeDetective;
+﻿using HeyRed.Mime;
+using MimeDetective;
 using Sulfur.Constants;
 using System;
 using System.Collections.Generic;
@@ -58,7 +59,8 @@ namespace Sulfur.Services.UrlFileDownloadActions
 
         private bool IsTorrentFile(String url, byte[] torrentFileAsBytes)
         {
-            FileType fileType = torrentFileAsBytes.GetFileType();
+            MimeGuesser.GuessExtension(torrentFileAsBytes); //=> image/jpeg
+
 
             //if(fileType.Mime)
         }
