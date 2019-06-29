@@ -57,12 +57,13 @@ namespace Sulfur.Services.UrlFileDownloadActions
             return true;
         }
 
+        //Checks if the file is a torrent file
         private bool IsTorrentFile(String url, byte[] torrentFileAsBytes)
         {
-            MimeGuesser.GuessExtension(torrentFileAsBytes); //=> image/jpeg
+            //Attempts to guess and return the file type
+            string mimeType = MimeGuesser.GuessMimeType(torrentFileAsBytes); //=> image/jpeg
 
-
-            //if(fileType.Mime)
+            return mimeType.Equals(ServiceConstants.TorrentFileType);
         }
 
         //Attempts to download the file into a byte array
