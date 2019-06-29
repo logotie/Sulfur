@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sulfur.Services.UrlFileDownloadActions
 {
-    public interface UrlFileDownloadService
+    public class UrlFileDownloadService : IUrlFileDownloadService
     {
-        Tuple<bool, ServiceConstants.UrlFileDlEnums> ProcessUrl(String url);
+        public Tuple<bool, ServiceConstants.UrlFileDlEnums> ProcessUrl(string url)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
