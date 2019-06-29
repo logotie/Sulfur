@@ -1,5 +1,4 @@
 ﻿using HeyRed.Mime;
-using MimeDetective;
 using Sulfur.Constants;
 using System;
 using System.Collections.Generic;
