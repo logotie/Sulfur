@@ -29,10 +29,27 @@ namespace SulfurXunitTests
         [Fact]
         public void GenerateNonBlankGuidPayloadString()
         {
-            GuidResult resultPayload = actionService.GenerateGuidPayload();
+            GuidResult resultPayload = actionService.GenerateGuidPayload(true, ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT);
 
             Assert.False(String.IsNullOrEmpty(resultPayload.Id));
         }
 
+        //Just checking that the string generated from the payload service is not blank or null.
+        [Fact]
+        public void GenerateNonBlankGuidPayloadString()
+        {
+            GuidResult resultPayload = actionService.GenerateGuidPayload(true, ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT);
+
+            Assert.False(String.IsNullOrEmpty(resultPayload.Id));
+        }
+
+        //Just checking that the string generated from the payload service is not blank or null.
+        [Fact]
+        public void GenerateNonBlankGuidPayloadString()
+        {
+            GuidResult resultPayload = actionService.GenerateGuidPayload(true, ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT);
+
+            Assert.False(String.IsNullOrEmpty(resultPayload.Id));
+        }
     }
 }
