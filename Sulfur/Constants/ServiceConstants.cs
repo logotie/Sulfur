@@ -15,7 +15,7 @@ namespace Sulfur.Constants
         //enums to be used by the UrlFileDownload service
         public enum UrlFileDlEnums
         {
-            WEBURLISNOTVALID, FILEINCORRECTFORMAT, SUCCESS
+            WebUrlIsNotValid, FileIncorrectFormat, Success
         }
 
         //used by the UrlFileDownload service when guessing a mime type

@@ -28,13 +28,13 @@ namespace Sulfur.Services.UrlHeaderActions
 
             switch (resultEnum)
             {
-                case ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT:
+                case ServiceConstants.UrlFileDlEnums.FileIncorrectFormat:
                     errormessage = Sulfur.Resource.FileIncorrectFormat;
                     responsePayload.success = "false";
                     responsePayload.error = errormessage;
                     return responsePayload;
 
-                case ServiceConstants.UrlFileDlEnums.WEBURLISNOTVALID:
+                case ServiceConstants.UrlFileDlEnums.WebUrlIsNotValid:
                     errormessage = Sulfur.Resource.InvalidWebUrl;
                     responsePayload.success = "false";
                     responsePayload.error = errormessage;

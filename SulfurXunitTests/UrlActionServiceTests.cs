@@ -29,7 +29,7 @@ namespace SulfurXunitTests
         [Fact]
         public void GenerateGuidWhenFileIsIncorrectFormat()
         {
-            GuidResult resultPayload = actionService.GenerateGuidPayload(false, ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT);
+            GuidResult resultPayload = actionService.GenerateGuidPayload(false, ServiceConstants.UrlFileDlEnums.FileIncorrectFormat);
 
             Assert.True(String.IsNullOrEmpty(resultPayload.Id));
             Assert.False(Boolean.Parse(resultPayload.success));
@@ -40,7 +40,7 @@ namespace SulfurXunitTests
         [Fact]
         public void GenerateGuidWhenUrlIsInvalid()
         {
-            GuidResult resultPayload = actionService.GenerateGuidPayload(false, ServiceConstants.UrlFileDlEnums.WEBURLISNOTVALID);
+            GuidResult resultPayload = actionService.GenerateGuidPayload(false, ServiceConstants.UrlFileDlEnums.WebUrlIsNotValid);
 
             Assert.True(String.IsNullOrEmpty(resultPayload.Id));
             Assert.False(Boolean.Parse(resultPayload.success));
@@ -51,7 +51,7 @@ namespace SulfurXunitTests
         [Fact]
         public void GenerateGuidWhenUrlIsValidAndTorrentFileExists()
         {
-            GuidResult resultPayload = actionService.GenerateGuidPayload(true, ServiceConstants.UrlFileDlEnums.SUCCESS);
+            GuidResult resultPayload = actionService.GenerateGuidPayload(true, ServiceConstants.UrlFileDlEnums.Success);
 
             Assert.False(String.IsNullOrEmpty(resultPayload.Id));
             Assert.True(Boolean.Parse(resultPayload.success));
