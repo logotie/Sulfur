@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sulfur.Constants;
 using Sulfur.Models;
+using Sulfur.Services.UrlFileDownloadActions;
 using Sulfur.Services.UrlHeaderActions;
 
 namespace Sulfur
@@ -15,10 +16,12 @@ namespace Sulfur
     public class TorrentFileController : ControllerBase
     {
         private readonly IUrlActionService _urlActionService;
+        private readonly IUrlFileDownloadService _urlFileDownloadService;
 
-        public TorrentFileController(IUrlActionService urlActionService)
+        public TorrentFileController(IUrlActionService urlActionService, IUrlFileDownloadService urlFileDownloadService)
         {
             _urlActionService = urlActionService;
+            _urlFileDownloadService = urlFileDownloadService;
         }
 
         // POST api/TorrentFile
@@ -38,15 +41,12 @@ namespace Sulfur
             }
 
             //process the url using the urlfiledownload service
+            var tupleResponse = _urlFileDownloadService.ProcessUrl(url.Url);
 
             //pass success or fail to urlactionservice and get back guid payload
+            GuidResult result = _urlActionService.GenerateGuidPayload(tupleResponse.Item1, tupleResponse.Item2);
 
-            //return guid payload
-
-            //ActionResult is the base class for various results for example JSONResult or Result
-            //You can return a various amount of things.
-            //Return a guid value from the post request
-            return _urlActionService.GenerateGuidPayload();
+            return result;
         }
     }
 }
