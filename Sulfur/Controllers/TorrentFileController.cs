@@ -37,13 +37,6 @@ namespace Sulfur
                 return BadRequest(ModelState);
             }
 
-            //Check also if the authtoken is valid also
-            if (!_urlActionService.SuccessfulMatchOnHeaderToken(headerAuthToken))
-            {
-                //Returns a 400 bad request
-                return BadRequest();
-            }
-
             //ActionResult is the base class for various results for example JSONResult or Result
             //You can return a various amount of things.
             //Return a guid value from the post request
