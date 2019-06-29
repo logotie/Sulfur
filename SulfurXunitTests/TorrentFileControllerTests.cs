@@ -99,10 +99,10 @@ namespace SulfurXunitTests
             Assert.False(boolRepresentationOfString);
         }
 
-        //We put a valid url 'www.google.com', it should fail with the error 'file incorrect format'
-        //Signifying a file was downloaded but it was not a torrent file.
+        //We put a valid  torrent url 'http://releases.ubuntu.com/19.04/ubuntu-19.04-desktop-amd64.iso.torrent', 
+        //it should succeed and the error field should be blank
         [Fact]
-        public void GuidGeneratePostRequestTest()
+        public void SuccessfulTorrentUrlAndFileDownload()
         {
             //Setup
             var mockUrlPayloadRequest = new Mock<UrlPayload>();
@@ -110,7 +110,7 @@ namespace SulfurXunitTests
             var mockUrlFileDownloadService = new Mock<UrlFileDownloadService>();
 
             //Sets up the url field to return google.com
-            mockUrlPayloadRequest.Setup(s => s.Url).Returns("https://google.com");
+            mockUrlPayloadRequest.Setup(s => s.Url).Returns("http://releases.ubuntu.com/19.04/ubuntu-19.04-desktop-amd64.iso.torrent");
 
             var controller = new TorrentFileController(mockUrlHeaderService.Object);
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
@@ -122,17 +122,17 @@ namespace SulfurXunitTests
             //Assert that it is of the type GuidResult
             Assert.IsType<ActionResult<GuidResult>>(result);
 
-            //Assert that the Guid Payload string is not null or empty
-            Assert.True(String.IsNullOrEmpty(result.Value.Id));
+            //Assert that the Guid Payload string is not empty, as the url does contain a torrent file
+            Assert.False(String.IsNullOrEmpty(result.Value.Id));
 
+            //the error message should be blank
+            Assert.True(String.IsNullOrEmpty(result.Value.error));
 
-            bool resultMatch = false;
-            if (result.Value.error.Equals(ServiceConstants.FileIncorrectFormat))
-                resultMatch = true;
+            //Boolean parse, returns the boolean parsed from the string
+            bool boolRepresentationOfString = Boolean.Parse(result.Value.success);
 
-            Assert.True(resultMatch);
-
-            Assert.True(Boolean.Parse(result.Value.success));
+            //Should be true, as it was able to parse the url and download the file
+            Assert.True(boolRepresentationOfString);
         }
     }
 }
