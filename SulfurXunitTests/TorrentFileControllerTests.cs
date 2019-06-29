@@ -5,6 +5,7 @@ using Moq;
 using Sulfur;
 using Sulfur.Constants;
 using Sulfur.Models;
+using Sulfur.Services.UrlFileDownloadActions;
 using Sulfur.Services.UrlHeaderActions;
 using System;
 using System.Collections.Generic;
@@ -17,19 +18,18 @@ namespace SulfurXunitTests
 {
     public class TorrentFileControllerTests
     {
-        //Need to fix the tests to somehow mock the header 
+        //We put a valid url 'www.google.com', it should fail with the error 'file incorrect format'
+        //Signifying a file was downloaded but it was not a torrent file.
         [Fact]
         public void GuidGeneratePostRequestTest()
         {
             //Setup
             var mockUrlPayloadRequest = new Mock<UrlPayload>();
             var mockUrlHeaderService = new Mock<UrlActionService>();
+            var mockUrlFileDownloadService = new Mock<UrlFileDownloadService>();
 
             //Sets up the url field to return google.com
-            mockUrlPayloadRequest.Setup(s => s.Url).Returns("google.com");
-
-            //var request = new HttpRequestMessage(HttpMethod.Post, "http://stackoverflow");
-            //request.Headers.Add(WebConstants.AuthHeaderKeyValue, ServiceConstants.AuthTokenPassword);
+            mockUrlPayloadRequest.Setup(s => s.Url).Returns("https://google.com");
 
             var controller = new TorrentFileController(mockUrlHeaderService.Object);
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
@@ -42,7 +42,16 @@ namespace SulfurXunitTests
             Assert.IsType<ActionResult<GuidResult>>(result);
 
             //Assert that the Guid Payload string is not null or empty
-            Assert.False(String.IsNullOrEmpty(result.Value.Id));
+            Assert.True(String.IsNullOrEmpty(result.Value.Id));
+
+
+            bool resultMatch = false;
+            if (result.Value.error.Equals(ServiceConstants.FileIncorrectFormat))
+                resultMatch = true;
+
+            Assert.True(resultMatch);
+
+            Assert.True(Boolean.Parse(result.Value.success));
         }
     }
 }
