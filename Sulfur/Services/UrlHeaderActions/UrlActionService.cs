@@ -16,14 +16,35 @@ namespace Sulfur.Services.UrlHeaderActions
             return headerToken.Equals(ServiceConstants.AuthTokenPassword);
         }
 
-        //Create a new Guid code to be sent back as a response.
-        //TODO In the future, the UrlPayload will be 
+        //Creates an appropriate message and boolean, based on if the url was able to be processed successfully
         public GuidResult GenerateGuidPayload(bool ableToProcess, ServiceConstants.UrlFileDlEnums resultEnum)
         {
+            String errormessage = "";
+
             Guid code = Guid.NewGuid();
-            GuidResult guidCode = new GuidResult();
-            guidCode.Id = code.ToString();
-            return guidCode;
+            String guid = code.ToString();
+
+            GuidResult responsePayload = new GuidResult();
+
+            switch (resultEnum)
+            {
+                case ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT:
+                    errormessage = ServiceConstants.FileIncorrectFormat;
+                    responsePayload.success = "false";
+                    responsePayload.error = errormessage;
+                    return responsePayload;
+
+                case ServiceConstants.UrlFileDlEnums.WEBURLISNOTVALID:
+                    errormessage = ServiceConstants.InvalidWebUrl;
+                    responsePayload.success = "false";
+                    responsePayload.error = errormessage;
+                    return responsePayload;
+            }
+
+            responsePayload.Id = guid;
+            responsePayload.success = "true";
+            responsePayload.error = errormessage;
+            return responsePayload;
         }
 
 
