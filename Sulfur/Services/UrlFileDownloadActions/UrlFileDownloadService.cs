@@ -20,13 +20,16 @@ namespace Sulfur.Services.UrlFileDownloadActions
         {
             if (ValidUrl(url))
             {
+                //Retrieve files as bytes, to be used by mime guesser
+                byte[] downloadFile = DownloadFileFromUrl(url);
 
-            }
-            else
-            {
-                return Tuple.Create<bool, ServiceConstants.UrlFileDlEnums>(false, ServiceConstants.UrlFileDlEnums.WEBURLISNOTVALID);
+                if (IsTorrentFile(downloadFile))
+                    return Tuple.Create<bool, ServiceConstants.UrlFileDlEnums>(true, ServiceConstants.UrlFileDlEnums.SUCCESS);
+                else
+                    return Tuple.Create<bool, ServiceConstants.UrlFileDlEnums>(false, ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT);
             }
 
+            return Tuple.Create<bool, ServiceConstants.UrlFileDlEnums>(false, ServiceConstants.UrlFileDlEnums.WEBURLISNOTVALID);
         }
 
         //Returns whether the url is valid
@@ -58,12 +61,12 @@ namespace Sulfur.Services.UrlFileDownloadActions
         }
 
         //Checks if the file is a torrent file
-        private bool IsTorrentFile(String url, byte[] torrentFileAsBytes)
+        private bool IsTorrentFile(byte[] torrentFileAsBytes)
         {
             //Attempts to guess and return the file type
             string mimeType = MimeGuesser.GuessMimeType(torrentFileAsBytes); //=> image/jpeg
 
-            return mimeType.Equals(ServiceConstants.TorrentFileType);
+            return mimeType.Equals(ServiceConstants.TorrentMimeType);
         }
 
         //Attempts to download the file into a byte array
