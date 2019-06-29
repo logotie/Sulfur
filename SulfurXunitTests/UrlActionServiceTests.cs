@@ -33,7 +33,7 @@ namespace SulfurXunitTests
 
             Assert.True(String.IsNullOrEmpty(resultPayload.Id));
             Assert.False(Boolean.Parse(resultPayload.success));
-            Assert.Equal(resultPayload.error, ServiceConstants.FileIncorrectFormat);
+            Assert.Equal(resultPayload.error, Sulfur.Resource.FileIncorrectFormat);
         }
 
         //When url is not valid a certain guid should be generated
@@ -44,7 +44,7 @@ namespace SulfurXunitTests
 
             Assert.True(String.IsNullOrEmpty(resultPayload.Id));
             Assert.False(Boolean.Parse(resultPayload.success));
-            Assert.Equal(resultPayload.error, ServiceConstants.InvalidWebUrl);
+            Assert.Equal(resultPayload.error, Sulfur.Resource.InvalidWebUrl);
         }
 
         //When url is valid and torrent file exists

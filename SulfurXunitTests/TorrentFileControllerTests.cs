@@ -47,7 +47,7 @@ namespace SulfurXunitTests
             bool resultMatch = false;
             //the error message should match the 'FileIncorrectFormat' message, as the file downloaded
             //is a html file not a torrent file
-            if (result.Value.error.Equals(ServiceConstants.FileIncorrectFormat))
+            if (result.Value.error.Equals(Sulfur.Resource.FileIncorrectFormat))
                 resultMatch = true;
 
             Assert.True(resultMatch);
@@ -87,7 +87,7 @@ namespace SulfurXunitTests
 
             bool resultMatch = false;
             //the error message should match the 'InvalidWebUrl' message, as the url is invalid
-            if (result.Value.error.Equals(ServiceConstants.InvalidWebUrl))
+            if (result.Value.error.Equals(Sulfur.Resource.InvalidWebUrl))
                 resultMatch = true;
 
             Assert.True(resultMatch);
