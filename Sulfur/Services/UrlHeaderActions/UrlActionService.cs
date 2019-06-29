@@ -3,6 +3,7 @@ using Sulfur.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Sulfur.Services.UrlHeaderActions
@@ -28,7 +29,30 @@ namespace Sulfur.Services.UrlHeaderActions
         //Returns whether the url is valid
         public bool ValidUrl(string url)
         {
-            throw new NotImplementedException();
+            HttpWebResponse response = null;
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "HEAD";
+
+
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                /* A WebException will be thrown if the status of the response is not `200 OK` */
+                return false;
+            }
+            finally
+            {
+                // Don't forget to close your response.
+                if (response != null)
+                {
+                    response.Close();
+                }
+            }
+
+            return true;
         }
     }
 }
