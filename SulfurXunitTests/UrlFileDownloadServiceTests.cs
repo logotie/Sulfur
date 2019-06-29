@@ -17,14 +17,26 @@ namespace SulfurXunitTests
         }
 
         [Fact]
-        public void UrlDownloadFileTest()
+        public void UrlDownloadInvalidUrlTest()
         {
             String invalidUrl = "https://www.google";
-            String fileIsNotTorrentFile = "https://www.google.com";
-            String success = "http://releases.ubuntu.com/19.04/ubuntu-19.04-desktop-amd64.iso.torrent";
 
             Assert.False(urlFileDownloadService.ProcessUrl(invalidUrl).Item1);
+        }
+
+        [Fact]
+        public void UrlDownloadInvalidUrlDownloadFileTest()
+        {
+            String fileIsNotTorrentFile = "https://www.google.com";
+
             Assert.False(urlFileDownloadService.ProcessUrl(fileIsNotTorrentFile).Item1);
+        }
+
+        [Fact]
+        public void SuccessUrlDownloadFileTest()
+        {
+            String success = "http://releases.ubuntu.com/19.04/ubuntu-19.04-desktop-amd64.iso.torrent";
+
             Assert.True(urlFileDownloadService.ProcessUrl(success).Item1);
         }
     }
