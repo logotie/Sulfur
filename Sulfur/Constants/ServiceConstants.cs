@@ -18,11 +18,6 @@ namespace Sulfur.Constants
             WEBURLISNOTVALID, FILEINCORRECTFORMAT, SUCCESS
         }
 
-        //constants to be used by the UrlActionService when determining a text message
-        public static string InvalidWebUrl = "Web url is not valid";
-        public static string FileIncorrectFormat = "File at url address is not a torrent file";
-        public static string Success = "Success";
-
         //used by the UrlFileDownload service when guessing a mime type
         public static string TorrentMimeType = "application/x-bittorrent";
     }
