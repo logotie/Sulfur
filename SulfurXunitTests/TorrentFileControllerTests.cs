@@ -155,11 +155,8 @@ namespace SulfurXunitTests
             //Act
             var result = controller.PostUrlPayload(mockUrlPayloadRequest.Object);
 
-            //Assert that it is of the type GuidResult
-            Assert.IsType<ActionResult<GuidResult>>(result);
-
-            //Assert that the Guid Payload string is not empty, as the url does contain a torrent file
-            Assert.True(String.IsNullOrEmpty(result.ToString()));
+            //Should be blank as auth test failed
+            Assert.True(result.Value==null);
         }
     }
 }
