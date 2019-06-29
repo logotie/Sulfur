@@ -34,18 +34,5 @@ namespace SulfurXunitTests
             Assert.False(String.IsNullOrEmpty(resultPayload.Id));
         }
 
-        [Fact]
-        public void ValidUrlTest()
-        {
-            String validUrl = "https://www.google.com";
-            String invalidUrl = "https://www.google";
-            String invalidUrl2 = "https://google";
-
-            Assert.True(actionService.ValidUrl(validUrl));
-            Assert.False(actionService.ValidUrl(invalidUrl));
-            Assert.False(actionService.ValidUrl(invalidUrl2));
-
-
-        }
     }
 }
