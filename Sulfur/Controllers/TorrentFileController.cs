@@ -37,6 +37,12 @@ namespace Sulfur
                 return BadRequest(ModelState);
             }
 
+            //process the url using the urlfiledownload service
+
+            //pass success or fail to urlactionservice and get back guid payload
+
+            //return guid payload
+
             //ActionResult is the base class for various results for example JSONResult or Result
             //You can return a various amount of things.
             //Return a guid value from the post request
