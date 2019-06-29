@@ -15,13 +15,12 @@ namespace Sulfur.Constants
         //enums to be used by the UrlFileDownload service
         public enum UrlFileDlEnums
         {
-            INVALIDWEBFORMAT, NOFILEATURL, FILEINCORRECTFORMAT, SUCCESS
+            WEBURLISNOTVALID, FILEINCORRECTFORMAT, SUCCESS
         }
 
         //constants to be used by the UrlActionService when determining a text message
-        public static string InvalidWebFormat = "Invalid Web format";
-        public static string NoFileAtUrl = "No file at url";
-        public static string FileIncorrectFormat = "File at url address is not a torrent";
+        public static string InvalidWebUrl = "Web url is not valid";
+        public static string FileIncorrectFormat = "File at url address is not a torrent file";
         public static string Success = "Success";
     }
 }
