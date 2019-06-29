@@ -8,6 +8,6 @@ namespace Sulfur.Services.UrlFileDownloadActions
 {
     public interface IUrlFileDownloadService
     {
-        Tuple<bool, ServiceConstants.UrlFileDlEnums> ProcessUrl(String url);
+        (bool, ServiceConstants.UrlFileDlEnums) ProcessUrl(String url);
     }
 }

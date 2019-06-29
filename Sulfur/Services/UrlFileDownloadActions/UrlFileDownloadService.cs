@@ -15,7 +15,7 @@ namespace Sulfur.Services.UrlFileDownloadActions
         //false, WEBURLISNOTVALID - The url is not valid, could be a 500 or 404 and it was unable to download
         //false, FILEINCORRECTFORMAT - The url is valid but the file at the url is not a torrent file
         //true, SUCCESS - Url is valid, file is a torrent file and was able to download.
-        public Tuple<bool, ServiceConstants.UrlFileDlEnums> ProcessUrl(string url)
+        public (bool, ServiceConstants.UrlFileDlEnums) ProcessUrl(string url)
         {
             if (ValidUrl(url))
             {
@@ -32,9 +32,9 @@ namespace Sulfur.Services.UrlFileDownloadActions
         }
 
         //Util method to create a tuple.
-        private Tuple<bool, ServiceConstants.UrlFileDlEnums> CreateAndReturnTuple(bool endResult, ServiceConstants.UrlFileDlEnums resultEnum)
+        private (bool, ServiceConstants.UrlFileDlEnums) CreateAndReturnTuple(bool endResult, ServiceConstants.UrlFileDlEnums resultEnum)
         {
-            return Tuple.Create<bool, ServiceConstants.UrlFileDlEnums>(endResult, resultEnum);
+            return(endResult, resultEnum);
         }
 
         //Returns whether the url is valid
