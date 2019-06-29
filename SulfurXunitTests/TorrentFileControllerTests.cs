@@ -31,7 +31,7 @@ namespace SulfurXunitTests
             //Sets up the url field to return google.com
             mockUrlPayloadRequest.Setup(s => s.Url).Returns("https://google.com");
 
-            var controller = new TorrentFileController(mockUrlHeaderService.Object);
+            var controller = new TorrentFileController(mockUrlHeaderService.Object, mockUrlFileDownloadService.Object);
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
             controller.Request.Headers.Add("Authorization", ServiceConstants.AuthTokenPassword); 
 
@@ -72,7 +72,7 @@ namespace SulfurXunitTests
             //Sets up the url field to return google.com
             mockUrlPayloadRequest.Setup(s => s.Url).Returns("https://google");
 
-            var controller = new TorrentFileController(mockUrlHeaderService.Object);
+            var controller = new TorrentFileController(mockUrlHeaderService.Object, mockUrlFileDownloadService.Object);
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
             controller.Request.Headers.Add("Authorization", ServiceConstants.AuthTokenPassword);
 
@@ -112,7 +112,7 @@ namespace SulfurXunitTests
             //Sets up the url field to return google.com
             mockUrlPayloadRequest.Setup(s => s.Url).Returns("http://releases.ubuntu.com/19.04/ubuntu-19.04-desktop-amd64.iso.torrent");
 
-            var controller = new TorrentFileController(mockUrlHeaderService.Object);
+            var controller = new TorrentFileController(mockUrlHeaderService.Object, mockUrlFileDownloadService.Object);
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
             controller.Request.Headers.Add("Authorization", ServiceConstants.AuthTokenPassword);
 
@@ -148,7 +148,7 @@ namespace SulfurXunitTests
             //Sets up the url field to return google.com
             mockUrlPayloadRequest.Setup(s => s.Url).Returns("http://releases.ubuntu.com/19.04/ubuntu-19.04-desktop-amd64.iso.torrent");
 
-            var controller = new TorrentFileController(mockUrlHeaderService.Object);
+            var controller = new TorrentFileController(mockUrlHeaderService.Object, mockUrlFileDownloadService.Object);
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
             controller.Request.Headers.Add("Authorization", "false");
 
