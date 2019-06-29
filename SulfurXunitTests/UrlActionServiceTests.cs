@@ -25,31 +25,37 @@ namespace SulfurXunitTests
             Assert.True(actionService.SuccessfulMatchOnHeaderToken(ServiceConstants.AuthTokenPassword));
         }
 
-        //Just checking that the string generated from the payload service is not blank or null.
+        //When file has an incorrect format a certain guid should be generated
         [Fact]
-        public void GenerateNonBlankGuidPayloadString()
+        public void GenerateGuidWhenFileIsIncorrectFormat()
         {
-            GuidResult resultPayload = actionService.GenerateGuidPayload(true, ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT);
+            GuidResult resultPayload = actionService.GenerateGuidPayload(false, ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT);
 
-            Assert.False(String.IsNullOrEmpty(resultPayload.Id));
+            Assert.True(String.IsNullOrEmpty(resultPayload.Id));
+            Assert.False(Boolean.Parse(resultPayload.success));
+            Assert.Equal(resultPayload.error, ServiceConstants.FileIncorrectFormat);
         }
 
-        //Just checking that the string generated from the payload service is not blank or null.
+        //When url is not valid a certain guid should be generated
         [Fact]
-        public void GenerateNonBlankGuidPayloadString()
+        public void GenerateGuidWhenUrlIsInvalid()
         {
-            GuidResult resultPayload = actionService.GenerateGuidPayload(true, ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT);
+            GuidResult resultPayload = actionService.GenerateGuidPayload(false, ServiceConstants.UrlFileDlEnums.WEBURLISNOTVALID);
 
-            Assert.False(String.IsNullOrEmpty(resultPayload.Id));
+            Assert.True(String.IsNullOrEmpty(resultPayload.Id));
+            Assert.False(Boolean.Parse(resultPayload.success));
+            Assert.Equal(resultPayload.error, ServiceConstants.InvalidWebUrl);
         }
 
-        //Just checking that the string generated from the payload service is not blank or null.
+        //When url is valid and torrent file exists
         [Fact]
-        public void GenerateNonBlankGuidPayloadString()
+        public void GenerateGuidWhenUrlIsValidAndTorrentFileExists()
         {
-            GuidResult resultPayload = actionService.GenerateGuidPayload(true, ServiceConstants.UrlFileDlEnums.FILEINCORRECTFORMAT);
+            GuidResult resultPayload = actionService.GenerateGuidPayload(true, ServiceConstants.UrlFileDlEnums.SUCCESS);
 
             Assert.False(String.IsNullOrEmpty(resultPayload.Id));
+            Assert.True(Boolean.Parse(resultPayload.success));
+            Assert.True(String.IsNullOrEmpty(resultPayload.error));
         }
     }
 }
