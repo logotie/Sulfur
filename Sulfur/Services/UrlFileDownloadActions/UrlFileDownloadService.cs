@@ -1,4 +1,5 @@
-﻿using Sulfur.Constants;
+﻿using MimeDetective;
+using Sulfur.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,11 @@ namespace Sulfur.Services.UrlFileDownloadActions
 {
     public class UrlFileDownloadService : IUrlFileDownloadService
     {
-        //Attempts to 
+        //Attempts to download the file at the url
+        //Returns a bool and enum signifying if successfull
+        //false, WEBURLISNOTVALID - The url is not valid, could be a 500 or 404 and it was unable to download
+        //false, FILEINCORRECTFORMAT - The url is valid but the file at the url is not a torrent file
+        //true, SUCCESS - Url is valid, file is a torrent file and was able to download.
         public Tuple<bool, ServiceConstants.UrlFileDlEnums> ProcessUrl(string url)
         {
             if (ValidUrl(url))
@@ -51,9 +56,22 @@ namespace Sulfur.Services.UrlFileDownloadActions
             return true;
         }
 
-        private bool IsTorrentFile(String url)
+        private bool IsTorrentFile(String url, byte[] torrentFileAsBytes)
         {
+            FileType fileType = torrentFileAsBytes.GetFileType();
 
+            //if(fileType.Mime)
+        }
+
+        //Attempts to download the file into a byte array
+        private byte[] DownloadFileFromUrl(String url)
+        {
+            byte[] torrentFileAsByteArray;
+            using (var webClient = new WebClient())
+            {
+                torrentFileAsByteArray = webClient.DownloadData("uri src");
+                return torrentFileAsByteArray;
+            }
         }
     }
 }
