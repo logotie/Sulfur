@@ -23,18 +23,12 @@ namespace Sulfur.Services.UrlFileDownloadActions
                 byte[] downloadFile = DownloadFileFromUrl(url);
 
                 if (IsTorrentFile(downloadFile))
-                    return CreateAndReturnTuple(true, ServiceConstants.UrlFileDlEnums.Success);
+                    return (true, ServiceConstants.UrlFileDlEnums.Success);
                 else
-                    return CreateAndReturnTuple(false, ServiceConstants.UrlFileDlEnums.FileIncorrectFormat);
+                    return (false, ServiceConstants.UrlFileDlEnums.FileIncorrectFormat);
             }
 
-            return CreateAndReturnTuple(false, ServiceConstants.UrlFileDlEnums.WebUrlIsNotValid);
-        }
-
-        //Util method to create a tuple.
-        private (bool, ServiceConstants.UrlFileDlEnums) CreateAndReturnTuple(bool endResult, ServiceConstants.UrlFileDlEnums resultEnum)
-        {
-            return(endResult, resultEnum);
+            return (false, ServiceConstants.UrlFileDlEnums.WebUrlIsNotValid);
         }
 
         //Returns whether the url is valid
