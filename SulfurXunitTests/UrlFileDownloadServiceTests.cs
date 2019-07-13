@@ -39,5 +39,11 @@ namespace SulfurXunitTests
 
             Assert.True(urlFileDownloadService.ProcessUrl(success).Item1);
         }
+
+        [Fact]
+        public void DoesTorrentContainAudioFileTest()
+        {
+            
+        }
     }
 }

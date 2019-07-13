@@ -9,5 +9,6 @@ namespace Sulfur.Services.UrlFileDownloadActions
     public interface IUrlFileDownloadService
     {
         (bool, ServiceConstants.UrlFileDlEnums) ProcessUrl(String url);
+
     }
 }
